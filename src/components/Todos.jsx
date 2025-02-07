@@ -16,7 +16,7 @@ const TodoApp = () => {
   };
 
   return (
-    <div className="my-2 ">
+    <div className="my-2">
       <input
         type="text"
         value={task}
