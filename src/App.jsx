@@ -10,6 +10,12 @@ import { StoreProvider } from "./context/StoreContext";
 import { ProductList } from "./components/ProductList/ProductList";
 import { CategoryFilter } from "./components/CategoryFilter/CategoryFilter";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
+// import Navbar from "./components/Navbar";
+
 function App() {
   const [name, setName] = useState("Random");
 
@@ -18,15 +24,21 @@ function App() {
   };
   console.log(`name->${name}`);
   return (
-    <>
-      <div className=" p-6 font-[monospace] flex flex-col">
+    <div className="font-[monospace]">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </BrowserRouter>
+      {/* <div className=" p-6 font-[monospace] flex flex-col">
         <Greetings myName={name} changeName={handleNameChange} />
         <Counter />
         <TodoApp />
         <ToggleTheme />
-        {/* <Timer/> */}
-      </div>
-      <StoreProvider>
+      </div> */}
+      {/* <StoreProvider>
         <div className="container mx-auto px-4">
           <h1 className="text-3xl font-bold text-center my-6">
             FakeStore Products
@@ -34,8 +46,8 @@ function App() {
           <CategoryFilter />
           <ProductList />
         </div>
-      </StoreProvider>
-    </>
+      </StoreProvider> */}
+    </div>
   );
 }
 

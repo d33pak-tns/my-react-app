@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function counter() {
   const [count, setCount] = useState(0);
@@ -10,6 +10,13 @@ export default function counter() {
   function handleDec() {
     count > 0 && setCount((prevCount) => prevCount - 1);
   }
+
+  //useEffect-hooks
+
+  useEffect(() => {
+    console.log(`Msg From useEffect
+    ~ Value Changed to ${count} `);
+  }, [count]);
 
   return (
     <div className=" my-2 flex flex-row w-8 h-4 justify-evenly items-center border-red-500">
