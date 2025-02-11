@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Counter from "./components/counter";
+
 import Greetings from "./components/Greetings";
 import TodoApp from "./components/Todos";
 import ToggleTheme from "./components/themeShift";
@@ -16,6 +16,11 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 // import Navbar from "./components/Navbar";
 
+import { Provider } from "react-redux";
+import store from "./store";
+import Counter from "./components/Counter";
+import UserComponent from "./components/UserComponent";
+
 function App() {
   const [name, setName] = useState("Random");
 
@@ -25,13 +30,13 @@ function App() {
   console.log(`name->${name}`);
   return (
     <div className="font-[monospace]">
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
       {/* <div className=" p-6 font-[monospace] flex flex-col">
         <Greetings myName={name} changeName={handleNameChange} />
         <Counter />
@@ -47,6 +52,10 @@ function App() {
           <ProductList />
         </div>
       </StoreProvider> */}
+      <Provider store={store}>
+        <Counter />
+        <UserComponent />
+      </Provider>
     </div>
   );
 }
